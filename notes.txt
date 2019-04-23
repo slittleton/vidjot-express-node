@@ -1,0 +1,131 @@
+======================================================
+============== Notes for Vidjot Project ==============
+======================================================
+
+Node - Express - MongoDB 
+
+============== MongoDB ==============
+starting up MongoDB locally
+
+in terminal window 
+
+first time
+"C:\Program Files\MongoDB\Server\4.0\bin\mongo.exe"
+
+access local mongeDB 
+cd C:\Program Files\MongoDB\Server\4.0\bin
+
+mongo
+
+show dbs
+use vidjot-dev
+show collections
+db.ideas.find()
+
+
+============== Create package.json  ==============
+generate package.json - contains list of dependencies and versions use
+
+---- in terminal 
+npm init
+
+============== Install Express ==============
+install express and its dependencies
+
+---- in terminal 
+
+npm install --save express 
+
+============== Entry point ==============
+default scenario uses index.js but we are using app.js for this Project
+
+============== nodemon ==============
+npm install -g nodemon
+
+npm root -g // finds folder where global modules are put
+
+---- in terminal start with
+nodemon
+
+
+======================================================
+============== Middleware ==============
+
+
+Using middleware
+Express is a routing and middleware web framework that has minimal 
+functionality of its own: An Express application is essentially a series 
+of middleware function calls.
+
+Middleware functions are functions that have access to the request object 
+(req), the response object (res), and the next middleware function in the 
+application’s request-response cycle. The next middleware function is commonly 
+denoted by a variable named next.
+
+Middleware functions can perform the following tasks:
+
+- Execute any code.
+- Make changes to the request and the response objects.
+- End the request-response cycle.
+- Call the next middleware function in the stack.
+
+If the current middleware function does not end the request-response cycle, 
+it must call next() to pass control to the next middleware function. Otherwise, 
+the request will be left hanging.
+
+
+======================================================
+============== Handlebars ==============
+middleware
+
+template engine - to render html and js expressions on the screen from the
+ server. You can use this instead of react or some other front-end framework. We 
+ are using it in this project for simplicity.
+
+npm install express-handlebars --save
+
+to see these templates you need to make a views directory and also make a directory 
+that contains main.js which is a view that wraps all other views.
+
+you can also have a dir called partials. We are using a partial to render the navbar 
+
+
+======================================================
+============== Mongoose ==============
+
+
+npm install --save mongoose
+
+============== body-parser.js ==============
+middleware
+Parse incoming request bodies in a middleware before 
+your handlers, available under the req.body property.
+
+npm install --save body-parser
+
+============== method-overried ==============
+middleware
+Lets you use HTTP verbs such as PUT or DELETE in places where 
+the client doesn't support it. In other words you can use it to change the 
+method of a <form> element depending on what you want to use the form for.
+You could change "post" to "get" for example
+
+This is useful if you don't want to write extra code to make an ajax request
+
+npm install --save method-override
+
+  <form action="/ideas/{{idea.id}}?_method=PUT" method="post">
+    <input type="hidden" name="_method" value="PUT">
+
+============== Express Session ==============
+middleware
+
+npm install --save session
+
+============== Connect Flash ==============
+middleware
+
+basically this allows us to pop up a message when a user has triggered an event 
+such as editing or deleting 
+
+npm install --save connect-flash
